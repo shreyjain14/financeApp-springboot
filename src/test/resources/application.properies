@@ -1,0 +1,3 @@
+spring.application.name=FinanceApp
+spring.data.mongodb.uri=mongodb://localhost:27017/FinanceAppTest
+spring.data.mongodb.database=FinanceAppTest

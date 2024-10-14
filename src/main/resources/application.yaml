@@ -1,0 +1,14 @@
+spring:
+  application:
+    name=FinanceApp
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+      database: ${MONGO_DB}
+server:
+  error:
+    include-stacktrace: never
+jwt:
+  key: ${JWT_KEY}
+  access-token-expiration: 86400000
+  refresh-token-expiration: 1209600000
