@@ -1,4 +1,4 @@
-# Finance App Springboot Application
+# Finance App Springboot API
   
 
 ## Auth:
