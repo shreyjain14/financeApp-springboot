@@ -1,6 +1,6 @@
 spring:
   application:
-    name=FinanceApp
+    name: FinanceApp
   data:
     mongodb:
       uri: ${MONGO_URI}
@@ -10,5 +10,9 @@ server:
     include-stacktrace: never
 jwt:
   key: ${JWT_KEY}
-  access-token-expiration: 86400000
+  access-token-expiration: 86400000 # 1 day in milliseconds
   refresh-token-expiration: 1209600000
+ollama:
+  model-name: llama3.2
+  base-url: http://localhost:11434/api
+  default-prompt: "Hello, this is the default prompt"

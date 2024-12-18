@@ -29,6 +29,8 @@ class SecurityConfiguration(
                     .permitAll()
                     .requestMatchers(HttpMethod.POST, "/api/users/register", "/api/auth/refresh")
                     .permitAll()
+                    .requestMatchers("/api/aiSummary")
+                    .authenticated()
                     .anyRequest()
                     .fullyAuthenticated()
             }
