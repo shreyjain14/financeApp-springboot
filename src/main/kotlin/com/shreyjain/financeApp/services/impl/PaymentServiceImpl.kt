@@ -19,6 +19,10 @@ class PaymentServiceImpl (
         return paymentRepository.findByUserId(userId, PageRequest.of(page - 1, 10))
     }
 
+    override fun findPaymentsByUserId(userId: String): List<PaymentModel> {
+        return paymentRepository.findByUserId(userId)
+    }
+
     override fun savePayment(paymentDto: PaymentDto): PaymentModel {
 
         val validationErrors = paymentValidator.validate(paymentDto)

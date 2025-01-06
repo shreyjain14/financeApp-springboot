@@ -30,9 +30,9 @@ class SecurityConfiguration(
                     .requestMatchers(HttpMethod.POST, "/api/users/register", "/api/auth/refresh")
                     .permitAll()
                     .requestMatchers("/api/aiSummary")
-                    .authenticated()
+                    .permitAll()
                     .anyRequest()
-                    .fullyAuthenticated()
+                    .authenticated()
             }
             .sessionManagement {
                 it
@@ -41,5 +41,4 @@ class SecurityConfiguration(
             .authenticationProvider(authenticationProvider)
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter::class.java)
             .build()
-
 }

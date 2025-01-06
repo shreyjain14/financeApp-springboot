@@ -11,7 +11,7 @@ interface OllamaService {
      * @throws OllamaException if the request fails
      */
     suspend fun generateResponse(
-        prompt: String,
+        email: String,
         options: Llama32Options = Llama32Options()
     ): String
 

@@ -15,7 +15,8 @@ import org.springframework.web.client.RestTemplate
 @Service
 class OllamaServiceImpl(
     @Value("\${ollama.model-name:llama3.2}")
-    private val modelName: String
+    private val modelName: String,
+    private val paymentServiceImpl: PaymentServiceImpl
 ) : OllamaService {
 
     private val logger = LoggerFactory.getLogger(javaClass)
@@ -23,13 +24,15 @@ class OllamaServiceImpl(
     private val ollamaUrl = "http://localhost:11434/api/generate"
 
     override suspend fun generateResponse(
-        prompt: String,
+        email: String,
         options: Llama32Options
     ): String {
         try {
             // Prepare headers
             val headers = HttpHeaders()
             headers.contentType = MediaType.APPLICATION_JSON
+
+            val prompt = "Give me a summary of the current financial status of this user's spends with a brief on user's spends and a bit on how they can control spending: " + paymentServiceImpl.findPaymentsByUserId(email).toString()
 
             // Prepare request body
             val request = mapOf(
@@ -49,8 +52,6 @@ class OllamaServiceImpl(
                 entity,
                 Map::class.java
             )
-
-            logger.info("Received response from Ollama: $response")
 
             // Extract response
             return response?.get("response")?.toString()

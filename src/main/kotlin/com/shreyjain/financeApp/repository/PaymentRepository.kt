@@ -9,5 +9,6 @@ import org.springframework.stereotype.Repository
 interface PaymentRepository : MongoRepository<PaymentModel, String> {
 
     fun findByUserId(userId: String, pageable: Pageable): List<PaymentModel>
+    fun findByUserId(userId: String): List<PaymentModel>
 
 }

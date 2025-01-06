@@ -6,6 +6,7 @@ import com.shreyjain.financeApp.domain.models.PaymentModel
 interface PaymentService {
 
     fun findPaymentsByUserId(userId: String, page: Int): List<PaymentModel>
+    fun findPaymentsByUserId(userId: String): List<PaymentModel>
     fun savePayment(paymentDto: PaymentDto): PaymentModel
     fun deletePayment(paymentId: String) : Boolean
     fun getPaymentUser(paymentId: String): String
